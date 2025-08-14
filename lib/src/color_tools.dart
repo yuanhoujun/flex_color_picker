@@ -803,10 +803,10 @@ extension FlexColorPickerColorExtensions on Color {
   /// * Bits 8-15 are the green value.
   /// * Bits 0-7 are the blue value.
   int get value32bit {
-    return _floatToInt8(a) << 24 |
-        _floatToInt8(r) << 16 |
-        _floatToInt8(g) << 8 |
-        _floatToInt8(b) << 0;
+    return (alpha8bit << 24) |
+        (red8bit << 16) |
+        (green8bit << 8) |
+        (blue8bit << 0);
   }
 
   /// The alpha channel of this color in an 8 bit value.
@@ -816,25 +816,25 @@ extension FlexColorPickerColorExtensions on Color {
   ///
   /// This feature brings back the Color.alpha API in a way that is not and
   /// will not be deprecated.
-  int get alpha8bit => (0xff000000 & value32bit) >> 24;
+  int get alpha8bit => (0xff000000 & value) >> 24;
 
   /// The red channel of this color in an 8 bit value.
   ///
   /// This feature brings back the Color.red API in a way that is not and
   /// will not be deprecated.
-  int get red8bit => (0x00ff0000 & value32bit) >> 16;
+  int get red8bit => (0x00ff0000 & value) >> 16;
 
   /// The green channel of this color in an 8 bit value.
   ///
   /// This feature brings back the Color.green API in a way that is not and
   /// will not be deprecated.
-  int get green8bit => (0x0000ff00 & value32bit) >> 8;
+  int get green8bit => (0x0000ff00 & value) >> 8;
 
   /// The blue channel of this color in an 8 bit value.
   ///
   /// This feature brings back the Color.blue API in a way that is not and
   /// will not be deprecated.
-  int get blue8bit => (0x000000ff & value32bit) >> 0;
+  int get blue8bit => (0x000000ff & value) >> 0;
 
   // Convert float to 8 bit integer.
   int _floatToInt8(double x) {

@@ -119,7 +119,7 @@ class OpacitySliderTrack extends SliderTrackShape {
       ..shader = ui.Gradient.linear(
           Offset.zero,
           Offset(trackRect.width, 0),
-          <Color>[color.withValues(alpha: 0), color.withValues(alpha: 1)],
+          <Color>[color.withAlpha(0), color.withAlpha(255)],
           <double>[0.05, 0.95]);
 
     Paint leftTrackPaint;

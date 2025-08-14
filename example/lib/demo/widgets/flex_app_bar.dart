@@ -775,6 +775,7 @@ class FlexAppBar {
           return false;
         case TargetPlatform.iOS:
         case TargetPlatform.macOS:
+        case TargetPlatform.ohos:
           return actions == null || actions.length < 2;
       }
     }
@@ -1155,7 +1156,7 @@ class FlexAppBarStyling extends StatelessWidget {
                     effectiveTopPadding -
                     (floatAppBar ? floatPadding.bottom : 0),
                 decoration: BoxDecoration(
-                  color: gradient ? null : color.withValues(alpha: opacity),
+                  color: gradient ? null : color.withOpacity(opacity),
                   borderRadius: effectiveBorderRadius,
                   border: effectiveBorder,
                   gradient: gradient
@@ -1164,13 +1165,13 @@ class FlexAppBarStyling extends StatelessWidget {
                           end: AlignmentDirectional.centerEnd,
                           colors: <Color>[
                             if (reverseGradient)
-                              endColor.withValues(alpha: opacity)
+                              endColor.withOpacity(opacity)
                             else
-                              color.withValues(alpha: startOpacity),
+                              color.withOpacity(startOpacity),
                             if (reverseGradient)
-                              color.withValues(alpha: startOpacity)
+                              color.withOpacity(startOpacity)
                             else
-                              endColor.withValues(alpha: opacity),
+                              endColor.withOpacity(opacity),
                           ],
                         )
                       : null,

@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/material.dart';
 
+import '../color_tools.dart';
 import '../models/color_picker_type.dart';
 
 /// These functions are not library exposed, they are private to the library.
@@ -46,6 +47,7 @@ String platformControlKey(TargetPlatform platform, String key) {
     case TargetPlatform.android:
     case TargetPlatform.iOS:
     case TargetPlatform.fuchsia:
+    case TargetPlatform.ohos:
       return '';
     case TargetPlatform.linux:
     case TargetPlatform.windows:
@@ -61,6 +63,7 @@ bool isDesktop(TargetPlatform platform) {
     case TargetPlatform.android:
     case TargetPlatform.iOS:
     case TargetPlatform.fuchsia:
+    case TargetPlatform.ohos:
       return false;
     case TargetPlatform.linux:
     case TargetPlatform.windows:

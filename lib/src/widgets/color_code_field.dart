@@ -199,10 +199,10 @@ class _ColorCodeFieldState extends State<ColorCodeField> {
         ThemeData.estimateBrightnessForColor(unfocusedBackground) ==
             Brightness.light;
     final Color textColor = isLight
-        ? (isLightBackground || unfocusedBackground.a < 0.5)
+        ? (isLightBackground || unfocusedBackground.alpha < 0.5)
             ? Colors.black
             : Colors.white
-        : (!isLightBackground || unfocusedBackground.a < 0.5)
+        : (!isLightBackground || unfocusedBackground.alpha < 0.5)
             ? Colors.white
             : Colors.black;
 
@@ -351,7 +351,7 @@ class _ColorCodeFieldState extends State<ColorCodeField> {
               setState(() {
                 color = textColor
                     .toColorShort(widget.copyPasteBehavior.parseShortHexCode)
-                    .withValues(alpha: color.a);
+                    .withAlpha(color.alpha);
               });
               widget.onColorChanged(color);
             },
@@ -359,7 +359,7 @@ class _ColorCodeFieldState extends State<ColorCodeField> {
               setState(() {
                 color = textController.text
                     .toColorShort(widget.copyPasteBehavior.parseShortHexCode)
-                    .withValues(alpha: color.a);
+                    .withAlpha(color.alpha);
               });
               textController.text = color.hex;
               widget.onColorChanged(color);
